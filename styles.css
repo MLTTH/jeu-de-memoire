@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+@font-face {
+    font-family: 'mondayregular';
+    src: url('font/monday-webfont.woff2') format('woff2'),
+         url('font/monday-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'mondayregular';
+    src: url('font/monday-webfont.woff2') format('woff2'),
+         url('font/monday-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    height: 100vh;
+    cursor: url(cursor/demon.png), auto;
+  }
+  
+  body {
+    margin: 0;
+    background: url(images/bg.jpg);
+    background-size: cover;
+    /* background: radial-gradient(#9D5900, #3D2200); */
+  }
+  
+  .page-title {
+    color: #f7c9c9;
+    font-family: 'mondayregular';
+    font-weight: normal;
+    text-align: center;
+    font-size: 6em;
+    text-shadow:
+    .1vw 0vw .25vw #f09696,
+    .15vw 0vw .25vw #f1a7a7,
+
+    .1vw 0vw .1vw #ff3131,
+    .15vw 0vw .1vw #ff3131,
+    .4vw 0vw .1vw #ff3131,
+
+    .1vw 0vw 2vw #ff3131,
+    .15vw 0vw 1vw #ff3131,
+    .4vw 0vw 2vw #ff3131,
+
+    .1vw 0vw 5vw #fb0404,
+    .15vw 0vw 1vw #fb0404,
+    .4vw 0vw 51vw #fb0404,
+
+    .1vw 0vw 101vw #fb0404,
+    .15vw 0vw 301vw #fb0404,
+    .4vw 0vw 10vw #fb0404;
+  }
+
+  .page-title span {
+    animation: blink 2s linear infinite alternate;
+  }
+
+  @keyframes blink {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+        .1vw 0vw .25vw #f09696,
+        .15vw 0vw .25vw #f1a7a7,
+    
+        .1vw 0vw .1vw #ff3131,
+        .15vw 0vw .1vw #ff3131,
+        .4vw 0vw .1vw #ff3131,
+    
+        .1vw 0vw 2vw #ff3131,
+        .15vw 0vw 1vw #ff3131,
+        .4vw 0vw 2vw #ff3131,
+    
+        .1vw 0vw 5vw #fb0404,
+        .15vw 0vw 1vw #fb0404,
+        .4vw 0vw 51vw #fb0404,
+    
+        .1vw 0vw 101vw #fb0404,
+        .15vw 0vw 301vw #fb0404,
+        .4vw 0vw 10vw #fb0404;
+    }
+        
+    20%, 24%, 55% {
+            text-shadow: none;
+
+    }
+}
+  
+  .game-info-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .game-info {
+    color: #fff;
+    font-size: 2em;
+    text-shadow:
+    .1vw 0vw .25vw #9697f0,
+    .15vw 0vw .25vw #a7a8f1,
+
+    .1vw 0vw .1vw #3134ff,
+    .15vw 0vw .1vw #3134ff,
+    .4vw 0vw .1vw #3134ff,
+
+    .1vw 0vw 2vw #3134ff,
+    .15vw 0vw 1vw #3134ff,
+    .4vw 0vw 2vw #3134ff,
+
+    .1vw 0vw 5vw #0408fb,
+    .15vw 0vw 1vw #0408fb,
+    .4vw 0vw 51vw #0408fb,
+
+    .1vw 0vw 101vw #0408fb,
+    .15vw 0vw 301vw #0408fb,
+    .4vw 0vw 10vw #0408fb;
+  }
+  
+  .game-container {
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    justify-content: center;
+    perspective: 500px;
+  }
+  
+  .card {
+    position: relative;
+    height: 150px;
+    width: 120px;
+    cursor: url(cursor/magnifier.png), auto;
+  }
+
+  .card .monster {
+    height: 170px;
+    width: 120px;
+  }
+  
+  .card-face {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
+    overflow: hidden;
+    transition: transform 500ms ease-in-out;
+    backface-visibility: hidden;
+  }
+  
+  .card.visible .card-back {
+    transform: rotateY(-180deg); 
+  }
+  
+  .card.visible .card-front {
+    transform: rotateY(0); 
+    
+  }
+
+
+  .card .card-front img {
+    height: 170px;
+    width: 140px;
+  }
+  
+  .card-back {
+    background-color: rgb(255, 0, 0);
+    border-color: #9173e25d;
+    transform: rotateY(0); 
+  }
+  
+.monster {
+    align-self: flex-start;
+    transition: transform 100ms ease-in-out;
+    transform: scale(1);
+  }
+  
+  .card-back:hover .monster {
+    transform: scale(1.2);
+    transition: transform 500ms ease-in-out;
+  }
+  
+  .card-value {
+    position: relative;
+    transition: transform 100ms ease-in-out;
+    transform: scale(1);
+  }
+  
+  .card-front:hover .card-value {
+    transform: scale(1.3);
+    transition: transform 500ms ease-in-out;
+  }
+  
+  .card-front {
+    background-color: #FFBB89;
+    border-color: #333;
+    transform: rotateY(180deg);
+  }
+  
+  .overlay-text {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #e69f08;
+    font-family: 'mondayregular';
+    transition: background-color 500ms, font-size 500ms;
+}
+
+  .overlay-text-small {
+    font-size: .3em;
+    animation: blink 2s linear infinite alternate;
+  }
+  
+  .overlay-text.visible {
+    display: flex;
+    animation: overlay-grow 500ms forwards;
+  }
+  
+  
+  @keyframes overlay-grow {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+      font-size: 0;
+    }
+    to {
+      background-color: rgba(0, 0, 0, .8);
+      font-size: 10em;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .game-container {
+      grid-template-columns: repeat(2, auto)
+    }
+  
+    .game-info-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
